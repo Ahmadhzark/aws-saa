@@ -1,4 +1,4 @@
-import { Badge, Card, CardBody, CardHeader, ProgressRing, Skeleton } from "../components";
+import { Badge, Card, CardBody, CardHeader, ExamCountdown, ProgressRing, Skeleton } from "../components";
 import { EXAM, TOTAL_HOURS, TOTAL_LABS, TOTAL_TOPICS, TOTAL_WEEKS, WEEKS } from "../data/curriculum";
 import { useStats } from "../store/useStats";
 import { useHydrated } from "../store/useProgress";
@@ -31,6 +31,8 @@ export function Dashboard() {
         <h1>Dashboard</h1>
         <p>Your AWS SAA-C03 command centre — a {TOTAL_WEEKS}-week program tracked end to end.</p>
       </div>
+
+      <ExamCountdown />
 
       <Card>
         <div className={styles.hero}>

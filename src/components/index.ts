@@ -7,6 +7,7 @@ export { SegmentedControl } from "./SegmentedControl";
 export type { SegOption } from "./SegmentedControl";
 export { ThemeToggle } from "./ThemeToggle";
 export { AccentPicker } from "./AccentPicker";
+export { ExamCountdown } from "./ExamCountdown";
 export { ProgressRing } from "./ProgressRing";
 export { EmptyState } from "./EmptyState";
 export { Skeleton } from "./Skeleton";
