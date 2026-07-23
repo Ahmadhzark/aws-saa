@@ -1,0 +1,69 @@
+.chart { display: flex; flex-direction: column; gap: var(--sp-2); }
+
+.plot {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  border-bottom: 1px solid var(--rule);
+}
+/* faint reference gridline at the top of the plot */
+.plot::before {
+  content: "";
+  position: absolute; left: 0; right: 0; top: 0;
+  border-top: 1px dashed var(--rule-soft);
+}
+
+.col {
+  position: relative;
+  flex: 1 1 0;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 0;
+}
+.bar {
+  width: 100%;
+  max-width: 22px;
+  min-height: 2px;
+  border-radius: 4px 4px 0 0;
+  background: var(--brand);
+  transition: background var(--dur-2) var(--ease), filter var(--dur-2) var(--ease);
+}
+.highlight { background: var(--brand-lit); }
+.col:hover .bar { filter: brightness(1.08); }
+.empty { background: var(--surface-3); }
+
+/* hover tooltip — appears above the hovered column */
+.tip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 9px;
+  background: var(--ink);
+  color: var(--ground);
+  border-radius: var(--r-sm);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-2) var(--ease);
+  z-index: 5;
+  box-shadow: var(--shadow-md);
+}
+.col:hover .tip, .col:focus-within .tip { opacity: 1; }
+
+.labels { display: flex; gap: 2px; }
+.label {
+  flex: 1 1 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--ink-3);
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}

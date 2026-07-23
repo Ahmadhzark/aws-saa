@@ -1,0 +1,43 @@
+.goalCard { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-6); align-items: center; padding: var(--sp-5) var(--sp-6); }
+@media (max-width: 560px) { .goalCard { grid-template-columns: 1fr; justify-items: center; text-align: center; } }
+.goalMeta { display: flex; flex-direction: column; gap: var(--sp-3); }
+.goalTitle { font-size: var(--text-md); font-weight: 650; }
+.goalSub { color: var(--ink-2); font-size: var(--text-sm); }
+.stepper { display: inline-flex; align-items: center; gap: var(--sp-3); }
+.stepBtn {
+  width: 34px; height: 34px; border-radius: var(--r-sm);
+  border: 1px solid var(--rule); color: var(--ink-2);
+  display: grid; place-items: center;
+  transition: border-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
+}
+.stepBtn:hover { border-color: var(--brand); color: var(--brand); }
+.stepVal { font-family: var(--font-mono); font-size: var(--text-md); font-weight: 650; min-width: 70px; text-align: center; }
+.stepVal small { color: var(--ink-3); font-weight: 400; font-size: var(--text-xs); }
+
+.groups { display: flex; flex-direction: column; gap: var(--sp-6); }
+.group { display: flex; flex-direction: column; gap: var(--sp-3); }
+.groupHead { display: flex; align-items: center; justify-content: space-between; }
+.groupTitle { font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--ink-3); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: var(--sp-3); }
+.badge {
+  display: flex; align-items: center; gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  transition: border-color var(--dur-2) var(--ease);
+}
+.unlocked { border-color: color-mix(in srgb, var(--brand) 40%, var(--rule)); }
+.medal {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center; flex: none;
+  background: var(--surface-2); color: var(--ink-3);
+}
+.unlocked .medal { background: linear-gradient(150deg, var(--brand-lit), var(--brand)); color: var(--on-brand); box-shadow: var(--shadow-sm); }
+.badgeBody { flex: 1; min-width: 0; }
+.badgeLabel { font-size: var(--text-sm); font-weight: 600; }
+.locked .badgeLabel { color: var(--ink-2); }
+.bar { height: 5px; margin-top: 7px; background: var(--surface-2); border-radius: var(--r-full); overflow: hidden; }
+.barFill { height: 100%; border-radius: var(--r-full); background: var(--brand); transition: width 0.7s var(--ease); }
+.badgeMeta { margin-top: 5px; font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); }

@@ -1,0 +1,104 @@
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import clsx from "clsx";
+import { Icon } from "../components/Icon";
+import type { IconName } from "../components/Icon";
+import { ThemeToggle } from "../components/ThemeToggle";
+import { Toaster } from "../components/Toaster";
+import { daysLeft } from "../lib/time";
+import styles from "./AppShell.module.css";
+
+interface NavItem {
+  to: string;
+  label: string;
+  icon: IconName;
+}
+
+const NAV: NavItem[] = [
+  { to: "/", label: "Dashboard", icon: "dashboard" },
+  { to: "/topics", label: "Topics", icon: "topics" },
+  { to: "/labs", label: "Labs", icon: "labs" },
+  { to: "/log", label: "Log", icon: "clock" },
+  { to: "/analytics", label: "Analytics", icon: "analytics" },
+  { to: "/goals", label: "Goals", icon: "target" },
+];
+
+const TITLES: Record<string, string> = {
+  "/": "Dashboard",
+  "/topics": "Topics",
+  "/labs": "Labs",
+  "/log": "Log",
+  "/analytics": "Analytics",
+  "/goals": "Goals",
+  "/design": "Design System",
+};
+
+export function AppShell() {
+  const { pathname } = useLocation();
+  const title = TITLES[pathname] ?? "AWS SAA";
+
+  return (
+    <div className={styles.shell}>
+      <div className={styles.brandCell}>
+        <div className={styles.mark}>
+          <Icon name="labs" size={17} strokeWidth={2.25} />
+        </div>
+        <div className={styles.brandText}>
+          <b>AWS SAA</b>
+          <span>SAA-C03</span>
+        </div>
+      </div>
+
+      <header className={styles.topbar}>
+        <div className={styles.pageTitle}>{title}</div>
+        <div className={styles.spacer} />
+        <ThemeToggle />
+        <div className={styles.countdown}>
+          <b>{daysLeft()}</b>
+          <span>days to exam</span>
+        </div>
+      </header>
+
+      <nav className={styles.nav} aria-label="Primary">
+        {NAV.map((item) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            end={item.to === "/"}
+            className={({ isActive }) => clsx(styles.navLink, isActive && styles.navActive)}
+          >
+            <Icon name={item.icon} size={18} />
+            {item.label}
+          </NavLink>
+        ))}
+        <div className={styles.navSpacer} />
+        <NavLink to="/design" className={({ isActive }) => clsx(styles.navLink, isActive && styles.navActive)}>
+          <Icon name="target" size={18} />
+          Design System
+        </NavLink>
+        <div className={styles.navFoot}>Preview build · v0</div>
+      </nav>
+
+      <main className={styles.main}>
+        <div className={styles.content}>
+          <Outlet />
+        </div>
+      </main>
+
+      <nav className={styles.tabbar} aria-label="Primary">
+        {NAV.map((item) => (
+          <NavLink
+            key={item.to}
+            to={item.to}
+            end={item.to === "/"}
+            className={({ isActive }) => clsx(styles.tab, isActive && styles.tabActive)}
+          >
+            <Icon name={item.icon} size={20} />
+            {item.label}
+          </NavLink>
+        ))}
+      </nav>
+
+      <Toaster />
+    </div>
+  );
+}

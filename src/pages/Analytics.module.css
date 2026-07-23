@@ -1,0 +1,18 @@
+.hardList { display: flex; flex-direction: column; gap: var(--sp-2); }
+.hardItem {
+  display: flex; align-items: center; gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--surface-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--r-md);
+}
+.hardId { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-3); flex: none; min-width: 34px; }
+.hardName { flex: 1; min-width: 0; font-size: var(--text-sm); font-weight: 550; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hardMeta { display: inline-flex; align-items: center; gap: var(--sp-2); flex: none; }
+.confPips { display: inline-flex; gap: 3px; }
+.pip { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--rule); }
+.pipOn { background: var(--brand); border-color: var(--brand); }
+
+.chartNote { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-3); margin-top: var(--sp-2); }
+.paceMsg { font-size: var(--text-base); line-height: 1.55; color: var(--ink-2); }
+.paceMsg b { color: var(--ink); font-weight: 650; }

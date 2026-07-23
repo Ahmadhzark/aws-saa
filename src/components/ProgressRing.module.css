@@ -1,0 +1,21 @@
+.wrap { position: relative; display: inline-grid; place-items: center; }
+.svg { transform: rotate(-90deg); }
+.track { stroke: var(--surface-3); fill: none; }
+.fill {
+  stroke: url(#ringGrad);
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.9s var(--ease);
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--brand) 45%, transparent));
+}
+.center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.value { font-family: var(--font-mono); font-weight: 650; line-height: 1; font-variant-numeric: tabular-nums; }
+.value small { color: var(--ink-3); font-weight: 500; }
+.label {
+  margin-top: 5px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+}

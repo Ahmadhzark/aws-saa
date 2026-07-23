@@ -1,0 +1,20 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-3);
+  padding: var(--sp-12) var(--sp-6);
+  border: 1px dashed var(--rule);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+.icon {
+  width: 52px; height: 52px; border-radius: var(--r-md);
+  display: grid; place-items: center;
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+.title { font-size: var(--text-md); font-weight: 650; }
+.desc { max-width: 42ch; color: var(--ink-2); font-size: var(--text-sm); }
+.tag { margin-top: var(--sp-2); }

@@ -1,0 +1,29 @@
+.seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+}
+.option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-1);
+  height: 30px;
+  padding: 0 var(--sp-3);
+  font-size: var(--text-sm);
+  font-weight: 550;
+  color: var(--ink-3);
+  border-radius: calc(var(--r-md) - 3px);
+  transition: color var(--dur-2) var(--ease), background var(--dur-2) var(--ease);
+}
+.option:hover { color: var(--ink-2); }
+.selected {
+  color: var(--ink);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.selected:hover { color: var(--ink); }
+.iconOnly { padding: 0; width: 34px; }
