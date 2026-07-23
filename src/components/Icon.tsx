@@ -6,7 +6,8 @@ export type IconName =
   | "sun" | "moon" | "monitor" | "search" | "check" | "chevronDown"
   | "menu" | "close" | "flame" | "clock" | "target"
   | "bookmark" | "plus" | "layers" | "sort"
-  | "settings" | "user" | "palette" | "trash" | "calendar" | "arrowRight";
+  | "settings" | "user" | "palette" | "trash" | "calendar" | "arrowRight"
+  | "play" | "pause" | "stop" | "refresh" | "book" | "quote";
 
 const PATHS: Record<IconName, string> = {
   dashboard: "M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z",
@@ -34,6 +35,12 @@ const PATHS: Record<IconName, string> = {
   trash: "M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13",
   calendar: "M4 6h16v15H4zM4 10h16M8 3v4M16 3v4",
   arrowRight: "M5 12h14M13 6l6 6-6 6",
+  play: "M7 5.5v13l11-6.5z",
+  pause: "M8 5v14M16 5v14",
+  stop: "M6.5 6.5h11v11h-11z",
+  refresh: "M20 11a8 8 0 1 0-2.3 5.7M20 4v5h-5",
+  book: "M5 4h11a2 2 0 0 1 2 2v14a1 1 0 0 0-1-1H5zM5 19a2 2 0 0 0 2 2h11",
+  quote: "M6 7h5v6a4 4 0 0 1-4 4M14 7h5v6a4 4 0 0 1-4 4",
 };
 
 interface IconProps {
