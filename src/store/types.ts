@@ -42,7 +42,7 @@ export interface Session {
 }
 
 // The 4 selectable accent themes. Each adapts to both light & dark modes.
-export type Accent = "azure" | "emerald" | "violet" | "amber";
+export type Accent = "aurora" | "azure" | "emerald" | "violet" | "amber";
 
 export interface Profile {
   name: string;

@@ -4,41 +4,48 @@
    type scale, spacing, radius, elevation, motion — is theme-invariant. */
 
 :root {
-  /* ---- neutral surfaces & ink (light) ---- */
-  --ground: #f6f7f9;
+  /* ---- Midnight Aurora — neutral surfaces & ink (light) ---- */
+  --ground: #eef1fb;
   --surface: #ffffff;
-  --surface-2: #eef1f5;
-  --surface-3: #e6eaf0;
-  --rule: #dce1e9;
-  --rule-soft: #e9edf2;
-  --ink: #161b22;
-  --ink-2: #495260;
-  --ink-3: #7a8494;
+  --surface-2: #f2f4fd;
+  --surface-3: #e8ecfa;
+  --rule: #dde2f3;
+  --rule-soft: #e9ecf8;
+  --ink: #101528;
+  --ink-2: #48547a;
+  --ink-3: #8590b3;
   --ink-inv: #ffffff;
 
-  /* ---- brand (copper) ---- */
-  --brand: #2563eb;
-  --brand-lit: #3b82f6;
-  --brand-soft: #e5edfd;
+  /* ---- brand: Aurora violet → cyan (default; overridden by [data-accent]) ---- */
+  --brand: #6d4dff;
+  --brand-lit: #8a6fff;
+  --brand-2: #12b5d6;      /* cyan partner used for aurora gradients (rings, bars) */
+  --brand-soft: #ece8ff;
   --on-brand: #ffffff;
 
   /* ---- semantic ---- */
-  --ok: #2e7d5b;
-  --warn: #b0791a;
-  --bad: #c0453d;
-  --info: #2a6fd6;
+  --ok: #12a150;
+  --warn: #c67c12;
+  --bad: #e0483d;
+  --info: #4f6bff;
 
   /* ---- categorical: six exam domains, fixed slots (accent marks only) ---- */
-  --d1: #2a78d6; --d2: #128a45; --d3: #d1477f; --d4: #d98b12; --d5: #1a9e78; --d6: #e0592a;
+  --d1: #6d4dff; --d2: #12a05f; --d3: #e0559a; --d4: #d98b12; --d5: #17b0c4; --d6: #ef6a3a;
 
-  /* ---- heatmap: sequential blue ramp, light→dark (monotone lightness) ---- */
-  --hm-0: #e6eaf0; --hm-1: #9dc0f5; --hm-2: #5b93ea; --hm-3: #2f6bd6; --hm-4: #1c47a0;
+  /* ---- heatmap: aurora ramp, soft→violet (monotone lightness) ---- */
+  --hm-0: #e7ebf8; --hm-1: #bcc6f6; --hm-2: #9a92f2; --hm-3: #7c5cff; --hm-4: #5a34d6;
 
-  /* ---- elevation ---- */
-  --shadow-sm: 0 1px 2px rgba(16, 22, 34, 0.05), 0 1px 3px rgba(16, 22, 34, 0.04);
-  --shadow-md: 0 2px 6px rgba(16, 22, 34, 0.06), 0 8px 24px rgba(16, 22, 34, 0.07);
-  --shadow-lg: 0 12px 40px rgba(16, 22, 34, 0.16);
-  --ring: 0 0 0 3px color-mix(in srgb, var(--brand) 32%, transparent);
+  /* ---- elevation + aurora glow ---- */
+  --shadow-sm: 0 1px 2px rgba(20, 24, 60, 0.06), 0 1px 3px rgba(20, 24, 60, 0.05);
+  --shadow-md: 0 2px 8px rgba(20, 24, 60, 0.07), 0 10px 28px rgba(20, 24, 60, 0.09);
+  --shadow-lg: 0 16px 48px rgba(20, 24, 60, 0.18);
+  --ring: 0 0 0 3px color-mix(in srgb, var(--brand) 30%, transparent);
+  --glow: 0 10px 30px color-mix(in srgb, var(--brand) 20%, transparent);
+  --glass: rgba(255, 255, 255, 0.74);
+  --glass-border: color-mix(in srgb, var(--brand) 14%, var(--rule));
+  --aurora-a: rgba(124, 92, 255, 0.12);
+  --aurora-b: rgba(24, 200, 224, 0.10);
+  --aurora-c: rgba(16, 185, 129, 0.07);
 
   /* ---- typography ---- */
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
@@ -71,51 +78,60 @@
 }
 
 :root[data-theme="dark"] {
-  --ground: #0c1015;
-  --surface: #141a22;
-  --surface-2: #1b222c;
-  --surface-3: #232c38;
-  --rule: #2a3441;
-  --rule-soft: #202833;
-  --ink: #e8edf4;
-  --ink-2: #a6b1c0;
-  --ink-3: #6d7887;
-  --ink-inv: #0c1015;
+  /* Midnight Aurora — deep near-black navy */
+  --ground: #0a0e17;
+  --surface: #121826;
+  --surface-2: #192134;
+  --surface-3: #232d45;
+  --rule: #2b3654;
+  --rule-soft: #1f2840;
+  --ink: #eaf0ff;
+  --ink-2: #abb7db;
+  --ink-3: #707da4;
+  --ink-inv: #0a0e17;
 
-  --brand: #4f8ff7;
-  --brand-lit: #6ba5ff;
-  --brand-soft: #14243f;
-  --on-brand: #0a1020;
+  --brand: #9a83ff;
+  --brand-lit: #b3a1ff;
+  --brand-2: #34d3ee;
+  --brand-soft: #1d2042;
+  --on-brand: #0a0e17;
 
-  --ok: #46a47a;
-  --warn: #d6a52b;
-  --bad: #dc6259;
-  --info: #4f93ea;
+  --ok: #34d399;
+  --warn: #f0b429;
+  --bad: #f0685e;
+  --info: #6d8bff;
 
-  --d1: #4f93ea; --d2: #2ba85f; --d3: #e26aa0; --d4: #e0a52f; --d5: #2bbd93; --d6: #ec7245;
+  --d1: #9a83ff; --d2: #2fbf78; --d3: #ef7ab0; --d4: #f0b429; --d5: #2fd3d0; --d6: #f5895a;
 
-  /* Dark ramp: brighter = more hours. */
-  --hm-0: #1e2630; --hm-1: #294a86; --hm-2: #356fc9; --hm-3: #5b93ea; --hm-4: #8fb8ff;
+  /* Dark aurora ramp: brighter/more-violet = more hours. */
+  --hm-0: #182034; --hm-1: #2a2f6b; --hm-2: #4a41b0; --hm-3: #6d5cff; --hm-4: #9a8bff;
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --ring: 0 0 0 3px color-mix(in srgb, var(--brand) 40%, transparent);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.45), 0 12px 34px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 18px 54px rgba(0, 0, 0, 0.62);
+  --ring: 0 0 0 3px color-mix(in srgb, var(--brand) 42%, transparent);
+  --glow: 0 10px 34px color-mix(in srgb, var(--brand) 34%, transparent);
+  --glass: color-mix(in srgb, var(--surface) 82%, transparent);
+  --glass-border: color-mix(in srgb, var(--brand) 22%, var(--rule));
+  --aurora-a: rgba(124, 92, 255, 0.20);
+  --aurora-b: rgba(24, 200, 224, 0.14);
+  --aurora-c: rgba(16, 185, 129, 0.10);
 }
 
 /* ---- accent themes ----------------------------------------------------------
-   Four selectable brand palettes, layered on top of [data-theme]. Only the
-   brand family is switched (--brand / --brand-lit / --brand-soft / --on-brand);
-   --ring derives from --brand via color-mix, so it follows automatically. Each
-   accent defines a light value on [data-accent] and a dark value on the
-   theme+accent pair. `azure` mirrors the base design so defaults are unchanged. */
+   Selectable brand palettes, layered on top of [data-theme]. Each switches the
+   brand family (--brand / --brand-lit / --brand-2 / --brand-soft / --on-brand);
+   --ring and --glow derive from --brand via color-mix, so they follow along.
+   `aurora` is the default Midnight Aurora signature (violet → cyan). */
 
-:root[data-accent="azure"]   { --brand: #2563eb; --brand-lit: #3b82f6; --brand-soft: #e5edfd; --on-brand: #ffffff; }
-:root[data-accent="emerald"] { --brand: #059669; --brand-lit: #10b981; --brand-soft: #dcf3e9; --on-brand: #ffffff; }
-:root[data-accent="violet"]  { --brand: #7c3aed; --brand-lit: #9257f0; --brand-soft: #eee6fd; --on-brand: #ffffff; }
-:root[data-accent="amber"]   { --brand: #c2740a; --brand-lit: #e08a12; --brand-soft: #fbeed3; --on-brand: #ffffff; }
+:root[data-accent="aurora"]  { --brand: #6d4dff; --brand-lit: #8a6fff; --brand-2: #12b5d6; --brand-soft: #ece8ff; --on-brand: #ffffff; }
+:root[data-accent="azure"]   { --brand: #2563eb; --brand-lit: #3b82f6; --brand-2: #38bdf8; --brand-soft: #e5edfd; --on-brand: #ffffff; }
+:root[data-accent="emerald"] { --brand: #059669; --brand-lit: #10b981; --brand-2: #5eead4; --brand-soft: #dcf3e9; --on-brand: #ffffff; }
+:root[data-accent="violet"]  { --brand: #7c3aed; --brand-lit: #9257f0; --brand-2: #c084fc; --brand-soft: #eee6fd; --on-brand: #ffffff; }
+:root[data-accent="amber"]   { --brand: #c2740a; --brand-lit: #e08a12; --brand-2: #fbbf24; --brand-soft: #fbeed3; --on-brand: #ffffff; }
 
-:root[data-theme="dark"][data-accent="azure"]   { --brand: #4f8ff7; --brand-lit: #6ba5ff; --brand-soft: #14243f; --on-brand: #0a1020; }
-:root[data-theme="dark"][data-accent="emerald"] { --brand: #34d399; --brand-lit: #5ee0af; --brand-soft: #0e2a20; --on-brand: #04140d; }
-:root[data-theme="dark"][data-accent="violet"]  { --brand: #a78bfa; --brand-lit: #bda3ff; --brand-soft: #201636; --on-brand: #0c0620; }
-:root[data-theme="dark"][data-accent="amber"]   { --brand: #f0b429; --brand-lit: #f8c650; --brand-soft: #2e2208; --on-brand: #1a1204; }
+:root[data-theme="dark"][data-accent="aurora"]  { --brand: #9a83ff; --brand-lit: #b3a1ff; --brand-2: #34d3ee; --brand-soft: #1d2042; --on-brand: #0a0e17; }
+:root[data-theme="dark"][data-accent="azure"]   { --brand: #4f8ff7; --brand-lit: #6ba5ff; --brand-2: #38bdf8; --brand-soft: #14243f; --on-brand: #0a1020; }
+:root[data-theme="dark"][data-accent="emerald"] { --brand: #34d399; --brand-lit: #5ee0af; --brand-2: #6ee7c8; --brand-soft: #0e2a20; --on-brand: #04140d; }
+:root[data-theme="dark"][data-accent="violet"]  { --brand: #a78bfa; --brand-lit: #bda3ff; --brand-2: #d0b3ff; --brand-soft: #201636; --on-brand: #0c0620; }
+:root[data-theme="dark"][data-accent="amber"]   { --brand: #f0b429; --brand-lit: #f8c650; --brand-2: #fcd34d; --brand-soft: #2e2208; --on-brand: #1a1204; }

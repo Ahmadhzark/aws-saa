@@ -38,7 +38,7 @@ const EMPTY: ProgressData = { topics: {}, labs: {}, sessions: {} };
 
 const DEFAULT_SETTINGS: Settings = {
   weeklyHoursTarget: 10,
-  accent: "azure",
+  accent: "aurora",
   profile: { name: "", age: null, examDate: null },
   onboarded: false,
 };

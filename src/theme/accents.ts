@@ -12,6 +12,7 @@ export interface AccentMeta {
 }
 
 export const ACCENTS: AccentMeta[] = [
+  { id: "aurora", label: "Aurora", swatch: "linear-gradient(135deg, #6d4dff, #12b5d6)" },
   { id: "azure", label: "Azure", swatch: "#2563eb" },
   { id: "emerald", label: "Emerald", swatch: "#059669" },
   { id: "violet", label: "Violet", swatch: "#7c3aed" },

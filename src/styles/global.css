@@ -10,7 +10,14 @@ html, body, #root { height: 100%; }
 
 body {
   margin: 0;
-  background: var(--ground);
+  /* Midnight Aurora backdrop: three soft colour blooms fixed behind everything,
+     revealed through the app's transparent frame and frosted-glass cards. */
+  background:
+    radial-gradient(1100px 720px at 8% -12%, var(--aurora-a), transparent 60%),
+    radial-gradient(900px 640px at 104% 4%, var(--aurora-b), transparent 55%),
+    radial-gradient(1000px 820px at 50% 118%, var(--aurora-c), transparent 62%),
+    var(--ground);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: var(--text-base);
