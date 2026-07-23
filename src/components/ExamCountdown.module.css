@@ -21,6 +21,12 @@
   background: var(--surface);
   border: 1px solid var(--rule-soft);
   border-radius: var(--r-md);
+  /* faint split line across the middle — the classic flip-clock seam */
+  background-image: linear-gradient(var(--rule-soft), var(--rule-soft));
+  background-size: 100% 1px;
+  background-position: center 47%;
+  background-repeat: no-repeat;
+  perspective: 240px;
 }
 .num {
   font-family: var(--font-mono);
@@ -30,6 +36,15 @@
   line-height: 1;
   color: var(--ink);
   letter-spacing: -0.01em;
+  transform-origin: center top;
+  animation: flip 0.5s var(--ease) both;
+}
+/* vintage split-flap: the new digit drops in from the top hinge */
+@keyframes flip {
+  0% { transform: rotateX(-88deg); opacity: 0; }
+  55% { transform: rotateX(14deg); opacity: 1; }
+  78% { transform: rotateX(-6deg); }
+  100% { transform: rotateX(0deg); }
 }
 .seg:first-child .num { color: var(--brand); }
 .lab {

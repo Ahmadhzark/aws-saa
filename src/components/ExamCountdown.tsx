@@ -55,12 +55,16 @@ export function ExamCountdown() {
         <span className={styles.date}>{formatDate(examDate)}</span>
       </div>
       <div className={styles.segs}>
-        {segs.map((seg, i) => (
-          <div className={styles.seg} key={seg.label}>
-            <span className={styles.num}>{i === 0 ? seg.v : pad(seg.v)}</span>
-            <span className={styles.lab}>{seg.label}</span>
-          </div>
-        ))}
+        {segs.map((seg, i) => {
+          const text = i === 0 ? String(seg.v) : pad(seg.v);
+          return (
+            <div className={styles.seg} key={seg.label}>
+              {/* key on value → the digit remounts and replays the flip on each change */}
+              <span className={styles.num} key={text}>{text}</span>
+              <span className={styles.lab}>{seg.label}</span>
+            </div>
+          );
+        })}
       </div>
     </Card>
   );
