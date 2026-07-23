@@ -42,7 +42,22 @@
   position: sticky; top: 0; z-index: 20;
 }
 .spacer { flex: 1; }
-.pageTitle { font-size: var(--text-md); font-weight: 650; letter-spacing: -0.01em; }
+.pageTitle { font-size: var(--text-md); font-weight: 650; letter-spacing: -0.01em; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* top-right settings shortcut */
+.iconBtn {
+  flex: none;
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: var(--r-md);
+  border: 1px solid var(--rule);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  transition: background var(--dur-2) var(--ease), color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease);
+}
+.iconBtn:hover { background: var(--surface-3); color: var(--ink); border-color: var(--brand); }
+.iconBtnActive { background: var(--brand-soft); color: var(--brand); border-color: color-mix(in srgb, var(--brand) 40%, var(--rule)); }
+
 .countdown { text-align: right; line-height: 1.05; }
 .countdown b { font-family: var(--font-mono); font-size: var(--text-md); color: var(--brand); font-variant-numeric: tabular-nums; }
 .countdown span { display: block; font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); }
@@ -94,7 +109,7 @@
   .brandCell { display: none; }
   .nav { display: none; }
   .main { padding: var(--sp-5) var(--sp-4) calc(72px + var(--sp-5)); }
-  .topbar { padding: 0 var(--sp-4); }
+  .topbar { padding: 0 var(--sp-4); gap: var(--sp-3); }
 
   .tabbar {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 30;
@@ -113,4 +128,10 @@
     transition: color var(--dur-2) var(--ease);
   }
   .tabActive { color: var(--brand); }
+}
+
+/* On very narrow phones drop the top-bar countdown so title + controls fit
+   comfortably — the exam countdown is still on the Dashboard as a stat card. */
+@media (max-width: 430px) {
+  .countdown { display: none; }
 }

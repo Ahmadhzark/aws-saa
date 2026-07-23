@@ -7,6 +7,11 @@
 .wave { display: inline-block; animation: wave 2.4s var(--ease) infinite; transform-origin: 70% 70%; }
 @keyframes wave { 0%, 60%, 100% { transform: rotate(0); } 10%, 30% { transform: rotate(14deg); } 20%, 40% { transform: rotate(-8deg); } }
 .sub { color: var(--ink-2); font-size: var(--text-sm); margin-top: 4px; }
+@media (max-width: 520px) {
+  .head { gap: var(--sp-2); }
+  .greeting { font-size: var(--text-lg); }
+  .datePill { padding: 6px var(--sp-2); font-size: var(--text-xs); }
+}
 .datePill {
   display: inline-flex; align-items: center; gap: var(--sp-2);
   padding: var(--sp-2) var(--sp-3);
@@ -63,7 +68,13 @@
 /* ---- stat row ---- */
 .statGrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--sp-3); }
 @media (max-width: 1000px) { .statGrid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 640px) { .statGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+  .statGrid { grid-template-columns: repeat(2, 1fr); }
+  /* stack value over a full-width sparkline so the fixed-width chart can't
+     overflow a narrow card */
+  .statMain { flex-direction: column; align-items: stretch; gap: var(--sp-2); }
+  .statMain svg { width: 100%; height: 30px; }
+}
 
 .stat {
   background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--r-lg);

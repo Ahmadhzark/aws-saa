@@ -55,11 +55,19 @@ export function AppShell() {
       <header className={styles.topbar}>
         <div className={styles.pageTitle}>{title}</div>
         <div className={styles.spacer} />
-        <ThemeToggle />
         <div className={styles.countdown}>
           <b>{left}</b>
           <span>days to exam</span>
         </div>
+        <ThemeToggle />
+        <NavLink
+          to="/settings"
+          className={({ isActive }) => clsx(styles.iconBtn, isActive && styles.iconBtnActive)}
+          title="Settings"
+          aria-label="Settings"
+        >
+          <Icon name="settings" size={18} />
+        </NavLink>
       </header>
 
       <nav className={styles.nav} aria-label="Primary">
