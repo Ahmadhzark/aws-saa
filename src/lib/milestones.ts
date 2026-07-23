@@ -30,44 +30,44 @@ export function computeMilestones(stats: Stats, analytics: Analytics): Milestone
     {
       group: "Overall progress", icon: "target", unit: "%", current: stats.overall,
       tiers: [
-        { target: 25, label: "Quarter way" },
-        { target: 50, label: "Halfway there" },
-        { target: 75, label: "Home stretch" },
-        { target: 100, label: "Blueprint complete" },
+        { target: 25, label: "Off the Ground" },
+        { target: 50, label: "Cruising Altitude" },
+        { target: 75, label: "Final Approach" },
+        { target: 100, label: "Well-Architected" },
       ],
     },
     {
       group: "Topics", icon: "topics", unit: "", current: stats.topicsDone,
       tiers: [
-        { target: 10, label: "First 10 topics" },
-        { target: 25, label: "25 topics down" },
-        { target: 44, label: "Every topic done" },
+        { target: 10, label: "Getting Traction" },
+        { target: 25, label: "Deep in the Docs" },
+        { target: 44, label: "No Topic Left Behind" },
       ],
     },
     {
       group: "Labs", icon: "labs", unit: "", current: stats.labsDone,
       tiers: [
-        { target: 5, label: "First 5 labs" },
-        { target: 15, label: "15 labs built" },
-        { target: 24, label: "All detailed labs" },
+        { target: 5, label: "Hands on the Console" },
+        { target: 15, label: "Builder Mode" },
+        { target: 24, label: "Master Builder" },
       ],
     },
     {
       group: "Study hours", icon: "clock", unit: "h", current: analytics.totalHours,
       tiers: [
-        { target: 25, label: "25 hours in" },
-        { target: 60, label: "60 hours logged" },
-        { target: 90, label: "90 hours logged" },
-        { target: 120, label: "Full 120 hours" },
+        { target: 25, label: "Warmed Up" },
+        { target: 60, label: "In the Zone" },
+        { target: 90, label: "Grind Mode" },
+        { target: 120, label: "Full Send" },
       ],
     },
     {
       group: "Streak", icon: "flame", unit: "d", current: stats.streak.best,
       tiers: [
-        { target: 3, label: "3-day streak" },
-        { target: 7, label: "One week straight" },
-        { target: 14, label: "Two weeks straight" },
-        { target: 30, label: "30-day streak" },
+        { target: 3, label: "On a Roll" },
+        { target: 7, label: "Week Warrior" },
+        { target: 14, label: "Unstoppable" },
+        { target: 30, label: "Iron Discipline" },
       ],
     },
   ];
