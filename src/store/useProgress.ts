@@ -4,7 +4,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import type { StateStorage } from "zustand/middleware";
 import { idbDel, idbGet, idbSet } from "../lib/db";
 import { todayISO } from "../lib/time";
-import type { FileRef, LabProgress, LabStatus, ProgressData, Settings, TopicTag } from "./types";
+import type { Accent, FileRef, LabProgress, LabStatus, Profile, ProgressData, Settings, TopicTag } from "./types";
 
 // Async storage adapter so the whole progress slice persists to IndexedDB.
 const idbStorage: StateStorage = {
@@ -16,6 +16,9 @@ const idbStorage: StateStorage = {
 interface ProgressStore extends ProgressData {
   settings: Settings;
   setWeeklyTarget: (hours: number) => void;
+  setAccent: (accent: Accent) => void;
+  setProfile: (patch: Partial<Profile>) => void;
+  completeOnboarding: (profile: Profile) => void;
   toggleTopic: (id: string) => void;
   setConfidence: (id: string, value: number | null) => void;
   setTopicNotes: (id: string, notes: string) => void;
@@ -33,14 +36,29 @@ interface ProgressStore extends ProgressData {
 
 const EMPTY: ProgressData = { topics: {}, labs: {}, sessions: {} };
 
+const DEFAULT_SETTINGS: Settings = {
+  weeklyHoursTarget: 10,
+  accent: "azure",
+  profile: { name: "", age: null, examDate: null },
+  onboarded: false,
+};
+
 export const useProgress = create<ProgressStore>()(
   persist(
     (set) => ({
       ...EMPTY,
-      settings: { weeklyHoursTarget: 10 },
+      settings: DEFAULT_SETTINGS,
 
       setWeeklyTarget: (hours) =>
         set((s) => ({ settings: { ...s.settings, weeklyHoursTarget: Math.max(1, Math.min(60, Math.round(hours))) } })),
+
+      setAccent: (accent) => set((s) => ({ settings: { ...s.settings, accent } })),
+
+      setProfile: (patch) =>
+        set((s) => ({ settings: { ...s.settings, profile: { ...s.settings.profile, ...patch } } })),
+
+      completeOnboarding: (profile) =>
+        set((s) => ({ settings: { ...s.settings, profile, onboarded: true } })),
 
       toggleTopic: (id) =>
         set((s) => {
@@ -108,9 +126,23 @@ export const useProgress = create<ProgressStore>()(
     }),
     {
       name: "aws-saa.progress",
-      version: 1,
+      version: 2,
       storage: createJSONStorage(() => idbStorage),
       partialize: (s) => ({ topics: s.topics, labs: s.labs, sessions: s.sessions, settings: s.settings }),
+      // Persisted state may predate the profile/accent/onboarding fields — backfill
+      // defaults so a stored `settings` object never clobbers them with undefined.
+      merge: (persisted, current) => {
+        const p = (persisted ?? {}) as Partial<ProgressStore>;
+        return {
+          ...current,
+          ...p,
+          settings: {
+            ...DEFAULT_SETTINGS,
+            ...p.settings,
+            profile: { ...DEFAULT_SETTINGS.profile, ...p.settings?.profile },
+          },
+        };
+      },
     },
   ),
 );

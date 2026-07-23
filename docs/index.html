@@ -12,18 +12,19 @@
     <meta name="apple-mobile-web-app-title" content="AWS SAA" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <title>AWS SAA — Progress</title>
-    <!-- Resolve theme before first paint so there is no light/dark flash. -->
+    <!-- Resolve theme + accent before first paint so there is no colour flash. -->
     <script>
       (function () {
         try {
           var p = localStorage.getItem('aws-saa.theme') || 'system';
           var dark = p === 'dark' || (p === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
           document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+          document.documentElement.dataset.accent = localStorage.getItem('aws-saa.accent') || 'azure';
         } catch (e) {}
       })();
     </script>
-    <script type="module" crossorigin src="/aws-saa/assets/index-DCO1In-e.js"></script>
-    <link rel="stylesheet" crossorigin href="/aws-saa/assets/index--iUPxDSH.css">
+    <script type="module" crossorigin src="/aws-saa/assets/index-D0Qg7Y9G.js"></script>
+    <link rel="stylesheet" crossorigin href="/aws-saa/assets/index-Cr-Eop4q.css">
   <link rel="manifest" href="/aws-saa/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/aws-saa/registerSW.js"></script></head>
   <body>
     <div id="root"></div>

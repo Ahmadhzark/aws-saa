@@ -10,8 +10,10 @@ export function dayDiff(a: string, b: string): number {
   return Math.round((Date.parse(b + "T00:00:00Z") - Date.parse(a + "T00:00:00Z")) / 86400000);
 }
 
-export function daysLeft(today = todayISO()): number {
-  return Math.max(0, dayDiff(today, EXAM));
+// `exam` defaults to the curriculum date but callers can pass the user's own
+// planned exam date (from Settings) to drive the live countdown.
+export function daysLeft(today = todayISO(), exam: string = EXAM): number {
+  return Math.max(0, dayDiff(today, exam));
 }
 
 export function elapsedDays(today = todayISO()): number {

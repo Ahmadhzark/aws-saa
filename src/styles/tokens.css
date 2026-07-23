@@ -102,3 +102,20 @@
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
   --ring: 0 0 0 3px color-mix(in srgb, var(--brand) 40%, transparent);
 }
+
+/* ---- accent themes ----------------------------------------------------------
+   Four selectable brand palettes, layered on top of [data-theme]. Only the
+   brand family is switched (--brand / --brand-lit / --brand-soft / --on-brand);
+   --ring derives from --brand via color-mix, so it follows automatically. Each
+   accent defines a light value on [data-accent] and a dark value on the
+   theme+accent pair. `azure` mirrors the base design so defaults are unchanged. */
+
+:root[data-accent="azure"]   { --brand: #2563eb; --brand-lit: #3b82f6; --brand-soft: #e5edfd; --on-brand: #ffffff; }
+:root[data-accent="emerald"] { --brand: #059669; --brand-lit: #10b981; --brand-soft: #dcf3e9; --on-brand: #ffffff; }
+:root[data-accent="violet"]  { --brand: #7c3aed; --brand-lit: #9257f0; --brand-soft: #eee6fd; --on-brand: #ffffff; }
+:root[data-accent="amber"]   { --brand: #c2740a; --brand-lit: #e08a12; --brand-soft: #fbeed3; --on-brand: #ffffff; }
+
+:root[data-theme="dark"][data-accent="azure"]   { --brand: #4f8ff7; --brand-lit: #6ba5ff; --brand-soft: #14243f; --on-brand: #0a1020; }
+:root[data-theme="dark"][data-accent="emerald"] { --brand: #34d399; --brand-lit: #5ee0af; --brand-soft: #0e2a20; --on-brand: #04140d; }
+:root[data-theme="dark"][data-accent="violet"]  { --brand: #a78bfa; --brand-lit: #bda3ff; --brand-soft: #201636; --on-brand: #0c0620; }
+:root[data-theme="dark"][data-accent="amber"]   { --brand: #f0b429; --brand-lit: #f8c650; --brand-soft: #2e2208; --on-brand: #1a1204; }

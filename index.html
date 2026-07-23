@@ -12,13 +12,14 @@
     <meta name="apple-mobile-web-app-title" content="AWS SAA" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <title>AWS SAA — Progress</title>
-    <!-- Resolve theme before first paint so there is no light/dark flash. -->
+    <!-- Resolve theme + accent before first paint so there is no colour flash. -->
     <script>
       (function () {
         try {
           var p = localStorage.getItem('aws-saa.theme') || 'system';
           var dark = p === 'dark' || (p === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
           document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+          document.documentElement.dataset.accent = localStorage.getItem('aws-saa.accent') || 'azure';
         } catch (e) {}
       })();
     </script>

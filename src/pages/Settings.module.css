@@ -1,0 +1,47 @@
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--sp-4); }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+}
+.input {
+  height: 44px;
+  padding: 0 var(--sp-3);
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+  font-size: var(--text-base);
+  color: var(--ink);
+  transition: border-color var(--dur-2) var(--ease);
+}
+.input:focus { outline: none; border-color: var(--brand); }
+.input::-webkit-calendar-picker-indicator { filter: grayscale(1) opacity(0.6); cursor: pointer; }
+
+.countdownNote {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--brand-soft);
+  border-radius: var(--r-md);
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+}
+.countdownNote b { color: var(--brand); font-family: var(--font-mono); font-weight: 650; }
+.countdownNote svg { color: var(--brand); flex: none; }
+
+.stack { display: flex; flex-direction: column; gap: var(--sp-5); }
+.divider { height: 1px; background: var(--rule-soft); }
+
+.optRow { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); flex-wrap: wrap; }
+.optCol { display: flex; flex-direction: column; gap: var(--sp-4); }
+.optText { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.optTitle { font-size: var(--text-base); font-weight: 600; }
+.optSub { font-size: var(--text-sm); color: var(--ink-2); max-width: 52ch; }
+
+.confirm { display: flex; gap: var(--sp-2); align-items: center; }

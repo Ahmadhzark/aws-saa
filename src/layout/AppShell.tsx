@@ -5,6 +5,8 @@ import type { IconName } from "../components/Icon";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Toaster } from "../components/Toaster";
 import { daysLeft } from "../lib/time";
+import { EXAM } from "../data/curriculum";
+import { useProgress } from "../store/useProgress";
 import styles from "./AppShell.module.css";
 
 interface NavItem {
@@ -29,12 +31,15 @@ const TITLES: Record<string, string> = {
   "/log": "Log",
   "/analytics": "Analytics",
   "/goals": "Goals",
+  "/settings": "Settings",
   "/design": "Design System",
 };
 
 export function AppShell() {
   const { pathname } = useLocation();
   const title = TITLES[pathname] ?? "AWS SAA";
+  const examDate = useProgress((s) => s.settings.profile.examDate);
+  const left = daysLeft(undefined, examDate ?? EXAM);
 
   return (
     <div className={styles.shell}>
@@ -53,7 +58,7 @@ export function AppShell() {
         <div className={styles.spacer} />
         <ThemeToggle />
         <div className={styles.countdown}>
-          <b>{daysLeft()}</b>
+          <b>{left}</b>
           <span>days to exam</span>
         </div>
       </header>
@@ -71,6 +76,10 @@ export function AppShell() {
           </NavLink>
         ))}
         <div className={styles.navSpacer} />
+        <NavLink to="/settings" className={({ isActive }) => clsx(styles.navLink, isActive && styles.navActive)}>
+          <Icon name="settings" size={18} />
+          Settings
+        </NavLink>
         <NavLink to="/design" className={({ isActive }) => clsx(styles.navLink, isActive && styles.navActive)}>
           <Icon name="target" size={18} />
           Design System

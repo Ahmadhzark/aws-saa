@@ -41,8 +41,20 @@ export interface Session {
   note?: string;
 }
 
+// The 4 selectable accent themes. Each adapts to both light & dark modes.
+export type Accent = "azure" | "emerald" | "violet" | "amber";
+
+export interface Profile {
+  name: string;
+  age: number | null;
+  examDate: string | null; // ISO "YYYY-MM-DD" — when the user plans to sit the exam
+}
+
 export interface Settings {
   weeklyHoursTarget: number;
+  accent: Accent;
+  profile: Profile;
+  onboarded: boolean; // false until the first-run flow is completed
 }
 
 export interface ProgressData {

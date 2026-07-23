@@ -5,7 +5,8 @@ export type IconName =
   | "dashboard" | "topics" | "labs" | "analytics"
   | "sun" | "moon" | "monitor" | "search" | "check" | "chevronDown"
   | "menu" | "close" | "flame" | "clock" | "target"
-  | "bookmark" | "plus" | "layers" | "sort";
+  | "bookmark" | "plus" | "layers" | "sort"
+  | "settings" | "user" | "palette" | "trash" | "calendar" | "arrowRight";
 
 const PATHS: Record<IconName, string> = {
   dashboard: "M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z",
@@ -27,6 +28,12 @@ const PATHS: Record<IconName, string> = {
   plus: "M12 5v14M5 12h14",
   layers: "M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5",
   sort: "M7 5v14M7 5l-3 3M7 5l3 3M17 19V5M17 19l3-3M17 19l-3-3",
+  settings: "M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H1a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 2.6 7a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1V1a2 2 0 1 1 4 0v.1A1.6 1.6 0 0 0 17 2.6a1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H23a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z",
+  user: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM5 20a7 7 0 0 1 14 0",
+  palette: "M12 3a9 9 0 1 0 0 18h1.5a2 2 0 0 0 1.6-3.2 2 2 0 0 1 1.6-3.2H19a3 3 0 0 0 3-3A9 9 0 0 0 12 3zM7.5 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM12 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM16.5 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2z",
+  trash: "M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13",
+  calendar: "M4 6h16v15H4zM4 10h16M8 3v4M16 3v4",
+  arrowRight: "M5 12h14M13 6l6 6-6 6",
 };
 
 interface IconProps {

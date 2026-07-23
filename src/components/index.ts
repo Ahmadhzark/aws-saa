@@ -6,6 +6,7 @@ export { Badge } from "./Badge";
 export { SegmentedControl } from "./SegmentedControl";
 export type { SegOption } from "./SegmentedControl";
 export { ThemeToggle } from "./ThemeToggle";
+export { AccentPicker } from "./AccentPicker";
 export { ProgressRing } from "./ProgressRing";
 export { EmptyState } from "./EmptyState";
 export { Skeleton } from "./Skeleton";
