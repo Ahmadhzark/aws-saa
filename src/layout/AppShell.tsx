@@ -32,7 +32,6 @@ const TITLES: Record<string, string> = {
   "/analytics": "Analytics",
   "/goals": "Goals",
   "/settings": "Settings",
-  "/design": "Design System",
 };
 
 export function AppShell() {
@@ -79,10 +78,6 @@ export function AppShell() {
         <NavLink to="/settings" className={({ isActive }) => clsx(styles.navLink, isActive && styles.navActive)}>
           <Icon name="settings" size={18} />
           Settings
-        </NavLink>
-        <NavLink to="/design" className={({ isActive }) => clsx(styles.navLink, isActive && styles.navActive)}>
-          <Icon name="target" size={18} />
-          Design System
         </NavLink>
         <div className={styles.navFoot}>Preview build · v0</div>
       </nav>

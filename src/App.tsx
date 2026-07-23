@@ -7,7 +7,6 @@ import { Log } from "./pages/Log";
 import { Analytics } from "./pages/Analytics";
 import { Goals } from "./pages/Goals";
 import { Settings } from "./pages/Settings";
-import { DesignSystem } from "./pages/DesignSystem";
 import { Onboarding } from "./components/Onboarding";
 import { useAccentSync } from "./theme/accents";
 import { useHydrated, useProgress } from "./store/useProgress";
@@ -28,7 +27,6 @@ export function App() {
           <Route path="analytics" element={<Analytics />} />
           <Route path="goals" element={<Goals />} />
           <Route path="settings" element={<Settings />} />
-          <Route path="design" element={<DesignSystem />} />
           <Route path="*" element={<Dashboard />} />
         </Route>
       </Routes>
