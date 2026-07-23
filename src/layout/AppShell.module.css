@@ -1,5 +1,7 @@
 .shell {
-  min-height: 100%;
+  height: 100vh;
+  height: 100dvh; /* keeps the frame pinned to the viewport so only .main scrolls */
+  overflow: hidden;
   display: grid;
   grid-template-columns: var(--nav-w) 1fr;
   grid-template-rows: var(--topbar-h) 1fr;
