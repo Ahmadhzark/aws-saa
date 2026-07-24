@@ -24,9 +24,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--sp-3);
+  gap: var(--sp-2) var(--sp-3);
   padding: var(--sp-4) var(--sp-5);
   border-bottom: 1px solid var(--rule-soft);
+  flex-wrap: wrap; /* long eyebrow actions drop to a new line instead of clipping */
 }
-.title { font-size: var(--text-md); font-weight: 650; letter-spacing: -0.01em; }
+.title { font-size: var(--text-md); font-weight: 650; letter-spacing: -0.01em; min-width: 0; }
 .body { padding: var(--sp-5); }
