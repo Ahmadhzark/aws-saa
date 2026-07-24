@@ -47,6 +47,25 @@
 
 .list { display: flex; flex-direction: column; gap: var(--sp-2); }
 
+/* domain grouping — subtopics nested under their main objective */
+.groups { display: flex; flex-direction: column; gap: var(--sp-6); }
+.domainGroup { display: flex; flex-direction: column; gap: var(--sp-3); }
+.domainHeader {
+  display: flex; align-items: center; gap: var(--sp-3);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--rule);
+  position: sticky; top: 0; z-index: 4;
+  background: var(--ground);
+}
+.domainSwatch { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+.domainTitle { font-size: var(--text-md); font-weight: 650; letter-spacing: -0.01em; }
+.domainTitle b { font-family: var(--font-mono); color: var(--ink-2); margin-right: 4px; }
+.domainWeight {
+  font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-3);
+  padding: 2px var(--sp-2); border: 1px solid var(--rule); border-radius: var(--r-full);
+}
+.domainCount { margin-left: auto; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-3); }
+
 .noResults {
   padding: var(--sp-10) var(--sp-6); text-align: center;
   color: var(--ink-3); font-size: var(--text-sm);

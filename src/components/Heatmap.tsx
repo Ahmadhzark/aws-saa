@@ -54,7 +54,7 @@ export function Heatmap({ sessions, today, selected, onSelect }: HeatmapProps) {
   return (
     <div className={styles.scroll}>
       <div className={styles.inner}>
-        <div className={styles.weeks} style={{ gridTemplateColumns: `repeat(${TOTAL_WEEKS}, 15px)` }} aria-hidden="true">{weekLabels}</div>
+        <div className={styles.weeks} style={{ gridTemplateColumns: `repeat(${TOTAL_WEEKS}, 1fr)` }} aria-hidden="true">{weekLabels}</div>
         <div className={styles.grid} role="img" aria-label="Study hours across the program">{cells}</div>
       </div>
     </div>
