@@ -59,7 +59,7 @@ export function AppShell() {
           <b>{left}</b>
           <span>days to exam</span>
         </div>
-        <ThemeToggle />
+        <span className={styles.topThemeToggle}><ThemeToggle /></span>
         <NavLink
           to="/settings"
           className={({ isActive }) => clsx(styles.iconBtn, isActive && styles.iconBtnActive)}

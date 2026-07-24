@@ -52,6 +52,17 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: var(--ink-3);
 }
 
+/* phones: let the backdrop scroll with the page (fixed attachment janks on
+   mobile) and simplify to a single bloom to keep compositing cheap */
+@media (max-width: 820px) {
+  body {
+    background:
+      radial-gradient(900px 700px at 50% -10%, var(--aurora-a), transparent 62%),
+      var(--ground);
+    background-attachment: scroll;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
