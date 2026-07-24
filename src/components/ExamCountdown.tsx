@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import clsx from "clsx";
 import { Card } from "./Card";
 import { Icon } from "./Icon";
 import { useProgress } from "../store/useProgress";
@@ -7,7 +8,8 @@ import styles from "./ExamCountdown.module.css";
 
 // Live, ticking countdown to the user's planned exam date. Counts down to local
 // midnight of the exam day. Renders a prompt to set a date if none is entered.
-export function ExamCountdown() {
+// `big` renders the enlarged variant used in the click-to-focus overlay.
+export function ExamCountdown({ big = false }: { big?: boolean } = {}) {
   const examDate = useProgress((s) => s.settings.profile.examDate);
   const [now, setNow] = useState(() => Date.now());
 
@@ -48,7 +50,7 @@ export function ExamCountdown() {
   ];
 
   return (
-    <Card className={styles.card}>
+    <Card className={clsx(styles.card, big && styles.big)}>
       <div className={styles.head}>
         <Icon name="clock" size={15} />
         <span className="eyebrow">Countdown to exam</span>

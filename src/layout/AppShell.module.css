@@ -58,9 +58,33 @@
 .iconBtn:hover { background: var(--surface-3); color: var(--ink); border-color: var(--brand); }
 .iconBtnActive { background: var(--brand-soft); color: var(--brand); border-color: color-mix(in srgb, var(--brand) 40%, var(--rule)); }
 
-.countdown { text-align: right; line-height: 1.05; }
+.countdown { text-align: right; line-height: 1.05; cursor: pointer; border-radius: var(--r-sm); padding: 4px 6px; transition: background var(--dur-2) var(--ease); }
+.countdown:hover { background: var(--surface-2); }
 .countdown b { font-family: var(--font-mono); font-size: var(--text-md); color: var(--brand); font-variant-numeric: tabular-nums; }
 .countdown span { display: block; font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); }
+
+/* click-to-focus countdown overlay: magnify + blur everything behind */
+.cdOverlay {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center;
+  padding: var(--sp-6);
+  background: color-mix(in srgb, var(--ground) 55%, rgba(0, 0, 0, 0.5));
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  animation: cdFade var(--dur-3) var(--ease);
+}
+@keyframes cdFade { from { opacity: 0; } }
+.cdModal { width: min(600px, 100%); animation: cdPop var(--dur-3) var(--spring); }
+@keyframes cdPop { from { opacity: 0; transform: scale(0.9); } }
+.cdClose {
+  position: fixed; top: var(--sp-5); right: var(--sp-5); z-index: 101;
+  width: 42px; height: 42px; display: grid; place-items: center;
+  border-radius: var(--r-full);
+  border: 1px solid var(--rule); background: var(--surface); color: var(--ink-2);
+  transition: color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease), transform var(--dur-1) var(--spring);
+}
+.cdClose:hover { color: var(--ink); border-color: var(--brand); }
+.cdClose:active { transform: scale(0.92); }
 
 /* ---- nav ---- */
 .nav {

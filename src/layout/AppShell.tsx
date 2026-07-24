@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import clsx from "clsx";
 import { Icon } from "../components/Icon";
 import type { IconName } from "../components/Icon";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Toaster } from "../components/Toaster";
+import { ExamCountdown } from "../components/ExamCountdown";
 import { daysLeft } from "../lib/time";
 import { EXAM } from "../data/curriculum";
 import { useProgress } from "../store/useProgress";
@@ -40,6 +42,15 @@ export function AppShell() {
   const examDate = useProgress((s) => s.settings.profile.examDate);
   const left = daysLeft(undefined, examDate ?? EXAM);
 
+  // Click-to-focus: magnify the live countdown and blur everything behind it.
+  const [focusCountdown, setFocusCountdown] = useState(false);
+  useEffect(() => {
+    if (!focusCountdown) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setFocusCountdown(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [focusCountdown]);
+
   return (
     <div className={styles.shell}>
       <div className={styles.brandCell}>
@@ -55,10 +66,16 @@ export function AppShell() {
       <header className={styles.topbar}>
         <div className={styles.pageTitle}>{title}</div>
         <div className={styles.spacer} />
-        <div className={styles.countdown}>
+        <button
+          type="button"
+          className={styles.countdown}
+          onClick={() => setFocusCountdown(true)}
+          title="Focus the countdown"
+          aria-label="Open full-screen countdown"
+        >
           <b>{left}</b>
           <span>days to exam</span>
-        </div>
+        </button>
         <span className={styles.topThemeToggle}><ThemeToggle /></span>
         <NavLink
           to="/settings"
@@ -109,6 +126,23 @@ export function AppShell() {
           </NavLink>
         ))}
       </nav>
+
+      {focusCountdown && (
+        <div
+          className={styles.cdOverlay}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Exam countdown"
+          onClick={() => setFocusCountdown(false)}
+        >
+          <button className={styles.cdClose} onClick={() => setFocusCountdown(false)} aria-label="Close countdown">
+            <Icon name="close" size={20} />
+          </button>
+          <div className={styles.cdModal} onClick={(e) => e.stopPropagation()}>
+            <ExamCountdown big />
+          </div>
+        </div>
+      )}
 
       <Toaster />
     </div>
