@@ -121,7 +121,7 @@ export function Analytics() {
         <CardBody>
           <p className={styles.paceMsg}>
             {stats.pace.hoursLeft === 0 ? (
-              <>All {TOTAL_HOURS}h logged — the program is complete. 🎉</>
+              <>All {TOTAL_HOURS}h logged — the program is complete.</>
             ) : stats.pace.perWeekActual === 0 ? (
               <>No hours logged yet. You'll need about <b>{stats.pace.perWeekNeeded}h/week</b> to reach {TOTAL_HOURS}h by exam day.</>
             ) : stats.pace.level === "ok" ? (

@@ -1,4 +1,6 @@
-import { Button, Card, EmptyState, Icon } from "../components";
+import { Link } from "react-router-dom";
+import { Button, Card, CardBody, CardHeader, EmptyState, Icon } from "../components";
+import { TOPICS } from "../data/curriculum";
 import { useProgress } from "../store/useProgress";
 import { toast } from "../store/useToast";
 import pageStyles from "./pages.module.css";
@@ -15,6 +17,12 @@ export function Notes() {
   const addNote = useProgress((s) => s.addNote);
   const updateNote = useProgress((s) => s.updateNote);
   const deleteNote = useProgress((s) => s.deleteNote);
+  const topicProgress = useProgress((s) => s.topics);
+
+  // Notes taken inside individual topics, surfaced here for one-glance review.
+  const topicNotes = TOPICS
+    .map((t) => ({ id: t.id, name: t.name, note: (topicProgress[t.id]?.notes ?? "").trim() }))
+    .filter((t) => t.note.length > 0);
 
   return (
     <div className={pageStyles.page}>
@@ -71,6 +79,28 @@ export function Notes() {
             </Card>
           ))}
         </div>
+      )}
+
+      {topicNotes.length > 0 && (
+        <Card>
+          <CardHeader
+            title="From your topics"
+            action={<Link to="/topics" className={styles.link}>Edit on Topics →</Link>}
+          />
+          <CardBody>
+            <div className={styles.topicNotes}>
+              {topicNotes.map((t) => (
+                <div key={t.id} className={styles.topicNote}>
+                  <div className={styles.topicNoteHead}>
+                    <span className={styles.topicId}>{t.id}</span>
+                    <span className={styles.topicName}>{t.name}</span>
+                  </div>
+                  <p className={styles.topicBody}>{t.note}</p>
+                </div>
+              ))}
+            </div>
+          </CardBody>
+        </Card>
       )}
     </div>
   );

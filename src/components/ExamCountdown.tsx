@@ -36,7 +36,7 @@ export function ExamCountdown({ big = false }: { big?: boolean } = {}) {
     return (
       <Card className={styles.done}>
         <Icon name="target" size={22} />
-        <span>Exam day is here — you've got this. Good luck! 🎉</span>
+        <span>Exam day is here — you've got this. Good luck.</span>
       </Card>
     );
   }

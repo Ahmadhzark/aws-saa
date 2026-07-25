@@ -49,6 +49,8 @@
 .iconBtn:hover { background: var(--surface-2); color: var(--ink-2); }
 .marked { color: var(--brand); }
 .marked svg { fill: var(--brand); }
+.hasNotes { color: var(--brand); position: relative; }
+.noteDot { position: absolute; top: 5px; right: 5px; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 2px var(--surface); }
 .expanded { transform: rotate(180deg); }
 
 /* expanded panel */

@@ -38,6 +38,24 @@ export function TopicCard({
     clearTimeout(timer.current);
     timer.current = setTimeout(() => onNotes(topic.id, val), 600);
   };
+  const hasNotes = draft.trim().length > 0;
+
+  // Expand the card and drop the cursor straight into the notes field.
+  const notesRef = useRef<HTMLTextAreaElement>(null);
+  const wantFocus = useRef(false);
+  useEffect(() => {
+    if (open && wantFocus.current) {
+      notesRef.current?.focus();
+      wantFocus.current = false;
+    }
+  }, [open]);
+  const openNotes = () => {
+    if (open) notesRef.current?.focus();
+    else {
+      wantFocus.current = true;
+      setOpen(true);
+    }
+  };
 
   return (
     <article className={clsx(styles.card, done && styles.done)} style={{ "--accent": `var(--d${accentIndex + 1})` } as CSSProperties}>
@@ -78,6 +96,16 @@ export function TopicCard({
         <div className={styles.actions}>
           <button
             type="button"
+            className={clsx(styles.iconBtn, hasNotes && styles.hasNotes)}
+            aria-label={`${hasNotes ? "Edit notes" : "Add notes"} for ${topic.id}`}
+            title={hasNotes ? "Edit notes" : "Add notes"}
+            onClick={openNotes}
+          >
+            <Icon name="note" size={16} />
+            {hasNotes && <span className={styles.noteDot} aria-hidden="true" />}
+          </button>
+          <button
+            type="button"
             className={clsx(styles.iconBtn, progress?.bookmarked && styles.marked)}
             aria-pressed={!!progress?.bookmarked}
             aria-label={`${progress?.bookmarked ? "Remove bookmark" : "Bookmark"} ${topic.id}`}
@@ -104,6 +132,7 @@ export function TopicCard({
             {topic.blurb}
           </p>
           <textarea
+            ref={notesRef}
             className={styles.notes}
             placeholder={`Your notes on ${topic.id}…`}
             value={draft}

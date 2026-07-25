@@ -8,7 +8,7 @@ export type IconName =
   | "bookmark" | "plus" | "layers" | "sort"
   | "settings" | "user" | "palette" | "trash" | "calendar" | "arrowRight"
   | "play" | "pause" | "stop" | "refresh" | "book" | "quote"
-  | "note" | "link" | "help" | "external";
+  | "note" | "link" | "help" | "external" | "mail" | "heart" | "info";
 
 const PATHS: Record<IconName, string> = {
   dashboard: "M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z",
@@ -46,6 +46,9 @@ const PATHS: Record<IconName, string> = {
   link: "M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1",
   help: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9.5 9.5a2.5 2.5 0 0 1 4.6 1.3c0 1.7-2.1 2-2.1 3.4M12 17h.01",
   external: "M14 4h6v6M20 4l-9 9M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5",
+  mail: "M4 5h16v14H4zM4 7l8 6 8-6",
+  heart: "M12 20s-7-4.4-9.3-8.7A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5.3C19 15.6 12 20 12 20z",
+  info: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 11v5M12 8h.01",
 };
 
 interface IconProps {

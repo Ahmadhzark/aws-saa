@@ -9,6 +9,7 @@ import { Goals } from "./pages/Goals";
 import { Notes } from "./pages/Notes";
 import { Resources } from "./pages/Resources";
 import { Quiz } from "./pages/Quiz";
+import { About } from "./pages/About";
 import { Settings } from "./pages/Settings";
 import { Onboarding } from "./components/Onboarding";
 import { useAccentSync } from "./theme/accents";
@@ -32,6 +33,7 @@ export function App() {
           <Route path="notes" element={<Notes />} />
           <Route path="resources" element={<Resources />} />
           <Route path="quiz" element={<Quiz />} />
+          <Route path="about" element={<About />} />
           <Route path="settings" element={<Settings />} />
           <Route path="*" element={<Dashboard />} />
         </Route>

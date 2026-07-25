@@ -185,7 +185,7 @@ export function Dashboard() {
             <Link to="/labs" className={styles.viewAll}>View All</Link>
           </div>
           <ul className={styles.planList}>
-            {upcomingLabs.length === 0 && <li className={styles.emptyRow}>All labs complete — nice. 🎉</li>}
+            {upcomingLabs.length === 0 && <li className={styles.emptyRow}>All labs complete — nicely done.</li>}
             {upcomingLabs.map((l) => (
               <li key={l.id}>
                 <Link to="/labs" className={styles.labRow}>
