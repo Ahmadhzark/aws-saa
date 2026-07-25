@@ -6,6 +6,9 @@ import { Labs } from "./pages/Labs";
 import { Log } from "./pages/Log";
 import { Analytics } from "./pages/Analytics";
 import { Goals } from "./pages/Goals";
+import { Notes } from "./pages/Notes";
+import { Resources } from "./pages/Resources";
+import { Quiz } from "./pages/Quiz";
 import { Settings } from "./pages/Settings";
 import { Onboarding } from "./components/Onboarding";
 import { useAccentSync } from "./theme/accents";
@@ -26,6 +29,9 @@ export function App() {
           <Route path="log" element={<Log />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="goals" element={<Goals />} />
+          <Route path="notes" element={<Notes />} />
+          <Route path="resources" element={<Resources />} />
+          <Route path="quiz" element={<Quiz />} />
           <Route path="settings" element={<Settings />} />
           <Route path="*" element={<Dashboard />} />
         </Route>

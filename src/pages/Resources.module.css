@@ -1,0 +1,41 @@
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--sp-3); }
+
+.res {
+  display: flex; align-items: center; gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--surface-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--r-md);
+  transition: border-color var(--dur-2) var(--ease), transform var(--dur-1) var(--spring);
+}
+a.res:hover, .res:hover { border-color: var(--brand); }
+a.res:active { transform: scale(0.99); }
+
+.resLink { display: flex; align-items: center; gap: var(--sp-3); flex: 1; min-width: 0; }
+.resIcon {
+  flex: none; width: 32px; height: 32px; border-radius: var(--r-sm);
+  display: grid; place-items: center; background: var(--brand-soft); color: var(--brand);
+}
+.resMain { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
+.resTitle { font-size: var(--text-sm); font-weight: 600; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.resNote { font-size: var(--text-xs); color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.resHost { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--ink-3); }
+.extIcon { color: var(--ink-3); flex: none; }
+
+.addRow { display: flex; gap: var(--sp-2); flex-wrap: wrap; margin-bottom: var(--sp-4); }
+.input {
+  flex: 1; min-width: 140px; height: 42px;
+  padding: 0 var(--sp-3);
+  background: var(--surface-2); border: 1px solid var(--rule); border-radius: var(--r-md);
+  font-size: var(--text-sm); color: var(--ink);
+}
+.input:focus { outline: none; border-color: var(--brand); }
+
+.del {
+  flex: none; width: 30px; height: 30px; border-radius: var(--r-sm);
+  display: grid; place-items: center; color: var(--ink-3);
+  transition: background var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
+}
+.del:hover { background: color-mix(in srgb, var(--bad) 14%, transparent); color: var(--bad); }
+
+.empty { padding: var(--sp-6); text-align: center; color: var(--ink-3); font-size: var(--text-sm); }

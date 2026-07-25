@@ -4,7 +4,10 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import type { StateStorage } from "zustand/middleware";
 import { idbDel, idbGet, idbSet } from "../lib/db";
 import { todayISO } from "../lib/time";
-import type { Accent, FileRef, LabProgress, LabStatus, Profile, ProgressData, Settings, TopicTag } from "./types";
+import type { Accent, FileRef, LabProgress, LabStatus, Note, Profile, ProgressData, Resource, Settings, TopicTag } from "./types";
+
+const uid = () =>
+  typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
 // Async storage adapter so the whole progress slice persists to IndexedDB.
 const idbStorage: StateStorage = {
@@ -15,6 +18,13 @@ const idbStorage: StateStorage = {
 
 interface ProgressStore extends ProgressData {
   settings: Settings;
+  notes: Note[];
+  resources: Resource[];
+  addNote: () => string;
+  updateNote: (id: string, patch: Partial<Pick<Note, "title" | "body">>) => void;
+  deleteNote: (id: string) => void;
+  addResource: (r: Pick<Resource, "title" | "url" | "note">) => void;
+  deleteResource: (id: string) => void;
   setWeeklyTarget: (hours: number) => void;
   setAccent: (accent: Accent) => void;
   setProfile: (patch: Partial<Profile>) => void;
@@ -48,6 +58,27 @@ export const useProgress = create<ProgressStore>()(
     (set) => ({
       ...EMPTY,
       settings: DEFAULT_SETTINGS,
+      notes: [],
+      resources: [],
+
+      addNote: () => {
+        const id = uid();
+        const now = new Date().toISOString();
+        set((s) => ({ notes: [{ id, title: "", body: "", createdAt: now, updatedAt: now }, ...s.notes] }));
+        return id;
+      },
+
+      updateNote: (id, patch) =>
+        set((s) => ({
+          notes: s.notes.map((n) => (n.id === id ? { ...n, ...patch, updatedAt: new Date().toISOString() } : n)),
+        })),
+
+      deleteNote: (id) => set((s) => ({ notes: s.notes.filter((n) => n.id !== id) })),
+
+      addResource: (r) =>
+        set((s) => ({ resources: [{ id: uid(), createdAt: new Date().toISOString(), ...r }, ...s.resources] })),
+
+      deleteResource: (id) => set((s) => ({ resources: s.resources.filter((r) => r.id !== id) })),
 
       setWeeklyTarget: (hours) =>
         set((s) => ({ settings: { ...s.settings, weeklyHoursTarget: Math.max(1, Math.min(60, Math.round(hours))) } })),
@@ -128,7 +159,7 @@ export const useProgress = create<ProgressStore>()(
       name: "aws-saa.progress",
       version: 2,
       storage: createJSONStorage(() => idbStorage),
-      partialize: (s) => ({ topics: s.topics, labs: s.labs, sessions: s.sessions, settings: s.settings }),
+      partialize: (s) => ({ topics: s.topics, labs: s.labs, sessions: s.sessions, settings: s.settings, notes: s.notes, resources: s.resources }),
       // Persisted state may predate the profile/accent/onboarding fields — backfill
       // defaults so a stored `settings` object never clobbers them with undefined.
       merge: (persisted, current) => {
@@ -136,6 +167,8 @@ export const useProgress = create<ProgressStore>()(
         return {
           ...current,
           ...p,
+          notes: p.notes ?? [],
+          resources: p.resources ?? [],
           settings: {
             ...DEFAULT_SETTINGS,
             ...p.settings,

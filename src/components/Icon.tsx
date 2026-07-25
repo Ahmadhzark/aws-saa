@@ -7,7 +7,8 @@ export type IconName =
   | "menu" | "close" | "flame" | "clock" | "target"
   | "bookmark" | "plus" | "layers" | "sort"
   | "settings" | "user" | "palette" | "trash" | "calendar" | "arrowRight"
-  | "play" | "pause" | "stop" | "refresh" | "book" | "quote";
+  | "play" | "pause" | "stop" | "refresh" | "book" | "quote"
+  | "note" | "link" | "help" | "external";
 
 const PATHS: Record<IconName, string> = {
   dashboard: "M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z",
@@ -41,6 +42,10 @@ const PATHS: Record<IconName, string> = {
   refresh: "M20 11a8 8 0 1 0-2.3 5.7M20 4v5h-5",
   book: "M5 4h11a2 2 0 0 1 2 2v14a1 1 0 0 0-1-1H5zM5 19a2 2 0 0 0 2 2h11",
   quote: "M6 7h5v6a4 4 0 0 1-4 4M14 7h5v6a4 4 0 0 1-4 4",
+  note: "M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h4",
+  link: "M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1",
+  help: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9.5 9.5a2.5 2.5 0 0 1 4.6 1.3c0 1.7-2.1 2-2.1 3.4M12 17h.01",
+  external: "M14 4h6v6M20 4l-9 9M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5",
 };
 
 interface IconProps {

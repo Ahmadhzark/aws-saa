@@ -62,3 +62,21 @@ export interface ProgressData {
   labs: Record<string, LabProgress>;
   sessions: Record<string, Session>; // keyed by date
 }
+
+// User content that is NOT study progress — kept separate so a progress reset
+// never wipes it. These back the Notes and Resources features.
+export interface Note {
+  id: string;
+  title: string;
+  body: string;
+  createdAt: string; // ISO
+  updatedAt: string; // ISO
+}
+
+export interface Resource {
+  id: string;
+  title: string;
+  url: string;
+  note?: string;
+  createdAt: string; // ISO
+}

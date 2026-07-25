@@ -24,6 +24,9 @@ const NAV: NavItem[] = [
   { to: "/log", label: "Log", icon: "clock" },
   { to: "/analytics", label: "Analytics", icon: "analytics" },
   { to: "/goals", label: "Goals", icon: "target" },
+  { to: "/notes", label: "Notes", icon: "note" },
+  { to: "/resources", label: "Resources", icon: "link" },
+  { to: "/quiz", label: "Quiz", icon: "help" },
 ];
 
 const TITLES: Record<string, string> = {
@@ -33,6 +36,9 @@ const TITLES: Record<string, string> = {
   "/log": "Log",
   "/analytics": "Analytics",
   "/goals": "Goals",
+  "/notes": "Notes",
+  "/resources": "Resources",
+  "/quiz": "Quiz",
   "/settings": "Settings",
 };
 
